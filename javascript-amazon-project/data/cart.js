@@ -1,3 +1,5 @@
+import { deliveryOptions } from "./deliveryOptions.js";
+
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function saveToStorage() {
@@ -19,7 +21,8 @@ export function addItemToCart(button) {
     } else {
         cart.push({
             productId: productId,
-            quantity: 1
+            quantity: 1,
+            deliveryOptionsId: '1'
         });
     };
     saveToStorage();
@@ -34,5 +37,14 @@ export function removeFromCart(productId) {
         
     });
     cart = cartAfterDelete;
+    saveToStorage();
+};
+
+export function updateDeliveryOption(productId, deliveryOptionId) {
+    cart.forEach((cartItem) => {
+        if (cartItem.productId === productId) {
+            cartItem.deliveryOptionsId = deliveryOptionId;
+        };
+    });
     saveToStorage();
 };
