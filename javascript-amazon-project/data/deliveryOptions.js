@@ -6,6 +6,10 @@ export const deliveryOptions = [
     { id: '3', deliverDays: 1, price: 999 }
 ];
 
+export function deliveryPrice(deliveryId) {
+    return (deliveryOptions.find((option) => option.id === deliveryId).price);
+}
+
 export function deliveryDate(deliveryId) {
     const options = deliveryOptions;
     const today = dayjs();
