@@ -1,14 +1,12 @@
-import { deliveryOptions } from "./deliveryOptions.js";
-
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function saveToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function addItemToCart(button) {
-    const productId = button.dataset.productId;
+export function addItemToCart(productId) {
     let matchingItem;
+    console.log(productId);
 
     cart.forEach((cartItem) => {
         if (productId === cartItem.productId) {

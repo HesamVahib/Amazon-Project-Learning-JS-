@@ -76,7 +76,8 @@ export function cartCheckout(cart) {
 document.querySelectorAll('.js-add-to-cart')
     .forEach((button) => {
         button.addEventListener('click', () => {
-            addItemToCart(button);
+            const productId = button.dataset.productId;
+            addItemToCart(productId);
             updateCartQuantity();
             cartCheckout(cart);
         });
